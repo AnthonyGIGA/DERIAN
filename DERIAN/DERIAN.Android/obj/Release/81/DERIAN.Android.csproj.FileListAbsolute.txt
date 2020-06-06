@@ -1,0 +1,3 @@
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\81\MonoAndroid,Version=v8.1.AssemblyAttributes.cs
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\81\build.props
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\81\adb.props

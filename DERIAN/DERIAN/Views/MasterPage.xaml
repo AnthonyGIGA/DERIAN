@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage  
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              FlowDirection="RightToLeft"
+             Title="Main"
+             x:Class="DERIAN.Views.MasterPage">
+  <!--Pages can be added as references or inline-->
+    <MasterDetailPage.Master>
+
+        <ContentPage  Title="Agregar Campo Custom" >
+            <StackLayout>
+                <Label Margin="10,0,0,0" Text="Agregar Campo Custom" HorizontalTextAlignment="End" FontSize="30"></Label>
+                <StackLayout Orientation="Vertical">
+
+                    <CollectionView
+                            x:Name="ListaCustom" 
+                            SelectionMode="Single" 
+                            SelectionChanged="AbrirCustom"
+                            >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout  Margin="0" VerticalOptions="CenterAndExpand">
+                                    <Label 
+                                        Margin="10"
+                                        FontSize="26"                  
+                                        HorizontalOptions="Center"
+                                        Text="{Binding nombre_campo}"
+                                        TextColor="Black"
+                                        VerticalOptions="Start">
+                                    </Label>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
+</MasterDetailPage>
