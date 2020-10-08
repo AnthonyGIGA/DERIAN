@@ -25,6 +25,9 @@ namespace DERIAN.Views
             InitializeComponent();
             this.idusu = Idusuario;
             this.labelpath.IsVisible = false;
+            exampleimage.Source = "derian2.png";
+
+            Title = "Agregar Colección";
 
             takePhoto.Clicked += async (sender, args) =>
             {
@@ -92,7 +95,6 @@ namespace DERIAN.Views
         private void tomarFoto(object sender, System.EventArgs e)
         {
             /* TakePhoto(); */
-
         }
          
         async void TakePhoto()
@@ -115,35 +117,51 @@ namespace DERIAN.Views
             byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
             Bitmap bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
              
-
         } 
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        async void RegistrarColle(object sender, System.EventArgs e)
         {
-            var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
-            var db = new SQLiteConnection(dbpath);
-            db.CreateTable<CollectionViewTable>();
-
-            var item = new CollectionViewTable()
+            if (await validarFormulario())
             {
-                nombre = EntryName.Text,
-                tipo = EntryType.Text,
-                imagen = labelpath.Text,
-                fecha_creacion = DateTime.Now.ToString(),
-                IdUsuario = this.idusu
+                var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+                var db = new SQLiteConnection(dbpath);
+                db.CreateTable<CollectionViewTable>();
 
-        };
+                var item = new CollectionViewTable()
+                {
+                    nombre = EntryName.Text,
+                    tipo = EntryType.Text,
+                    imagen = labelpath.Text,
+                    fecha_creacion = DateTime.Now.ToString(),
+                    IdUsuario = this.idusu
+                };
 
-            db.Insert(item);
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var result = await this.DisplayAlert("Agregada!", "Colección agregada", "OK", "Cancelar");
+                db.Insert(item);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //var result = await this.DisplayAlert("Agregada!", "Colección agregada con la ID: " + item.Id, "OK", "Cancelar");
 
-                if (result)
-                    /* await Navigation.PushAsync(new HomePage(this.idusu)); */
-                    await Navigation.PopAsync();
-            });
+                    //if (result)
+                    await Navigation.PushAsync(new VerCamposCustom(item.Id));
+                    //await Navigation.PopAsync();
+                });
+            }
         }
 
+        private async Task<bool> validarFormulario()
+        {
+            if (String.IsNullOrWhiteSpace(EntryName.Text))
+            {
+                await this.DisplayAlert("Advertencia", "El campo del nombre es obligatorio.", "OK");
+                return false;
+            }
+            //Valida si la cantidad de digitos ingresados es igual o menor a 15
+            if (EntryName.Text.Length > 20)
+            {
+                await this.DisplayAlert("Advertencia", "Límite de carácteres excedido, favor de ingresar máximo 20 carácteres.", "OK");
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DERIAN.HeaderContentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HeightRequest="170">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+
+            <!--<Image
+                Grid.RowSpan="4"
+                Grid.ColumnSpan="5"
+                Aspect="AspectFill"
+                Opacity="0.6"
+                Source="gradient.jpeg" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="1"
+                HeightRequest="80"
+                HorizontalOptions="Start"
+                Source="userimage.png"
+                VerticalOptions="End"
+                WidthRequest="80" />-->
+
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Margin="10,0,0,0"
+                Orientation="Vertical"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    HorizontalTextAlignment="Start"
+                    Text="Xamarin Guy"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    HorizontalTextAlignment="Start"
+                    Text="something@gmail.com"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

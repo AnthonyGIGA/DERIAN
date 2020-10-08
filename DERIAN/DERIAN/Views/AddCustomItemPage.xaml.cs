@@ -15,7 +15,7 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCustomItemPage : ContentPage
     {
-        public int idItem, idCus;
+        private int idItem, idCus;
         public AddCustomItemPage()
         {
         }

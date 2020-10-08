@@ -14,7 +14,7 @@ namespace DERIAN.Tables
         [AutoIncrement]
         public int UserId { get; set; }
         public string Nombre { get; set; }
-        public string Pin { get; set; }
+        public int Pin { get; set; }
         public string Email { get; set; }
         public string Numero { get; set; }
 

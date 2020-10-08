@@ -40,9 +40,7 @@ namespace DERIAN.Views
             if (IsTableExists("ItemViewTable") == true)
             {
                 this.titulocolle.Text = nombrecolle;
-                ListaItems.ItemsSource = db.Table<ItemViewTable>().Where(u => u.IdColeccion.Equals(this.idcolle));
-
-                 
+                ListaItems.ItemsSource = db.Table<ItemViewTable>().Where(u => u.IdColeccion.Equals(this.idcolle));                 
 
             }
 
@@ -52,6 +50,49 @@ namespace DERIAN.Views
         {
             await Navigation.PushAsync(new AddItemPage(this.idcolle, this.idusu));
         }
+        async void modificar_coleccion(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new UpdateCollectionPage(this.idcolle, this.nombrecolle));
+        } 
+
+        void eliminar_coleccion(object sender, System.EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var confirm = await this.DisplayAlert("Eliminar Colección!", "Estás Seguro?", "OK", "Cancelar");
+
+                if (confirm)
+                {
+                    var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+                    var db = new SQLiteConnection(dbpath);
+
+                    var table = db.Table<CollectionViewTable>();
+                    var toDelete = table.Where(x => x.Id == idcolle).FirstOrDefault();
+                    if (toDelete != null)
+                    {
+                        db.Delete(toDelete);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            var result = await this.DisplayAlert("Eliminado!", "Colección eliminada", "OK", "Cancelar");
+
+                            if (result)
+                                await Navigation.PopAsync();
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            var result = await this.DisplayAlert("Error!", "No se pudo eliminar", "OK", "Cancelar");
+                        });
+                    }
+
+                }
+            });
+
+        }
+
+
 
         async void agregar_campo_custom(object sender, System.EventArgs e)
         {

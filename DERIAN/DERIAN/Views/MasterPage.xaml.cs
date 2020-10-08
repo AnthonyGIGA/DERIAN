@@ -37,6 +37,16 @@ namespace DERIAN.Views
             Detail = new NavigationPage(new ItemPage(this.idItem, this.idColle));
         }
 
+        public void CloseThisMaster(){
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Ítem eliminado!", "ítem eliminado", "OK", "Cancelar");
+
+                if (result)
+                    await Navigation.PopAsync();
+            });
+        }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();

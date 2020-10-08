@@ -1,63 +1,108 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             mc:Ignorable="d"
-             x:Class="DERIAN.Views.AddItemPage">
-    
+<ContentPage
+    x:Class="DERIAN.Views.AddItemPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
     <ContentPage.Content>
-        
+
         <ScrollView>
             <StackLayout>
                 <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/> 
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Spacing="0"
-                     Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}">
-                        <Label 
-                   Text="Crear ítem"
-                   FontSize="Title"
-                   TextColor="{DynamicResource mainLabel}" 
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="StartAndExpand"/>
+                    <StackLayout
+                        Grid.Row="0"
+                        Margin="{OnPlatform Android='10, 10, 0, 0',
+                                            iOS='0'}"
+                        Spacing="0">
+                        <Label
+                            FontSize="Title"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Crear ítem"
+                            TextColor="{DynamicResource mainLabel}"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout Grid.Row="1">
-                        <Image x:Name="exampleimage"></Image>
+                        <Image x:Name="exampleimage" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="2">
-                        <Entry Placeholder="Nombre" FontSize="16" x:Name="EntryName"/>
+                        <Entry
+                            x:Name="EntryName"
+                            FontSize="16"
+                            Placeholder="Nombre" />
                     </StackLayout>
-                     
+
                     <StackLayout Grid.Row="3">
-                        <PanCake:PancakeView   BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" >
-                            <Button x:Name="takeImage" Text="Cargar imagen" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="250"/>
+                        <PanCake:PancakeView
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="takeImage"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Cargar imagen"
+                                TextColor="White"
+                                WidthRequest="250" />
                         </PanCake:PancakeView>
                     </StackLayout>
                     <StackLayout Grid.Row="4">
-                        <PanCake:PancakeView  BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand">
-                            <Button x:Name="takePhoto"  Text="Tomar foto" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="250"/>
+                        <PanCake:PancakeView
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="takePhoto"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Tomar foto"
+                                TextColor="White"
+                                WidthRequest="250" />
                         </PanCake:PancakeView>
-                        
+
                     </StackLayout>
 
                     <StackLayout Grid.Row="5">
-                        <PanCake:PancakeView BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" >
-                            <Button x:Name="botonAgregarItem" Clicked="Handle_Clicked"  Text="Agregar" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="250"/>
+                        <PanCake:PancakeView
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="botonAgregarItem"
+                                BackgroundColor="Transparent"
+                                Clicked="Handle_Clicked"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Agregar"
+                                TextColor="White"
+                                WidthRequest="250" />
                         </PanCake:PancakeView>
                     </StackLayout>
 
-                    
+
                     <StackLayout Grid.Row="6">
-                        <Label x:Name="labelpath" FontSize="13"/>
-                    </StackLayout> 
+                        <Label x:Name="labelpath" FontSize="13" />
+                    </StackLayout>
 
                 </Grid>
 

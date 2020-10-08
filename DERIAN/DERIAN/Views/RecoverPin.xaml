@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DERIAN.Views.RecoverPin"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#e5e5e5">
+                <Image
+                    HeightRequest="180"
+                    Source="derian1.png"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="180" />
+
+                <Grid
+                    Margin="20"
+                    RowSpacing="20"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Entry
+                        x:Name="EntryUserEmail"
+                        Grid.Row="0"
+                        Placeholder="Email" />
+
+
+                    <Button
+                        Grid.Row="1"
+                        BackgroundColor="#262626"
+                        Clicked="recuperar_pin"
+                        FontSize="14"
+                        HeightRequest="45"
+                        Text="Recuperar PIN"
+                        TextColor="#F29F2C"
+                        WidthRequest="250" />
+
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

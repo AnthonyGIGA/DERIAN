@@ -19,7 +19,7 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddItemPage : ContentPage
     {
-        public int idcolle, idusu;
+        private int idcolle, idusu;
              
         public AddItemPage()
         {
@@ -95,9 +95,7 @@ namespace DERIAN.Views
                     var stream = file.GetStream();
                     return stream;
                 });
-
-                
-
+                               
 
             };
 
@@ -134,9 +132,7 @@ namespace DERIAN.Views
         {
             base.OnAppearing();
             var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
-            var db = new SQLiteConnection(dbpath);
-
-             
+            var db = new SQLiteConnection(dbpath);            
 
         }
 
@@ -194,31 +190,50 @@ namespace DERIAN.Views
 
         }
 
-
-        void Handle_Clicked(object sender, System.EventArgs e)
+        private async Task<bool> validarFormulario()
         {
-            var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
-            var db = new SQLiteConnection(dbpath);
-            db.CreateTable<ItemViewTable>();
-
-            var item = new ItemViewTable()
+            if (String.IsNullOrWhiteSpace(EntryName.Text))
             {
-                nombre = EntryName.Text, 
-                imagen = labelpath.Text,
-                fecha_creacion = DateTime.Now.ToString(),
-                IdColeccion = this.idcolle
-
-            };
-
-            db.Insert(item);
-            Device.BeginInvokeOnMainThread(async () =>
+                await this.DisplayAlert("Advertencia", "El campo del nombre es obligatorio.", "OK");
+                return false;
+            }
+            //Valida si la cantidad de digitos ingresados es igual o menor a 35
+            if (EntryName.Text.Length > 35)
             {
-                var result = await this.DisplayAlert("Agregada!", "ítem agregado", "OK", "Cancelar");
+                await this.DisplayAlert("Advertencia", "Límite de carácteres excedido, favor de ingresar máximo 35 digitos.", "OK");
+                return false;
+            }
+            return true;
+        }
 
-                if (result)
-                    /* await Navigation.PushAsync(new CollectionPage(this.idcolle ,this.idusu)); */
-                    await Navigation.PopAsync();
-            });
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            if (await validarFormulario())
+            {
+                var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+                var db = new SQLiteConnection(dbpath);
+                db.CreateTable<ItemViewTable>();
+
+                var item = new ItemViewTable()
+                {
+                    nombre = EntryName.Text,
+                    imagen = labelpath.Text,
+                    fecha_creacion = DateTime.Now.ToString(),
+                    IdColeccion = this.idcolle
+                };
+
+                db.Insert(item);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var result = await this.DisplayAlert("Agregado!", "ítem agregado", "OK", "Cancelar");
+
+                    if (result)
+                        /* await Navigation.PushAsync(new CollectionPage(this.idcolle ,this.idusu)); */
+                        await Navigation.PopAsync();
+                });
+            }
+                
         }
     }
 }

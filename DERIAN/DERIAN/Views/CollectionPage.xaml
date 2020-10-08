@@ -1,11 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:DERIAN="clr-namespace:DERIAN" xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:DERIAN.Controls"
-             mc:Ignorable="d"
-             x:Class="DERIAN.Views.CollectionPage">
-    
+<ContentPage
+    x:Class="DERIAN.Views.CollectionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:DERIAN="clr-namespace:DERIAN"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:controls="clr-namespace:DERIAN.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
     <ContentPage.Resources>
         <Style TargetType="StackLayout">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -26,57 +30,52 @@
     <ContentPage.Content>
 
         <StackLayout Margin="15,25,25,0">
-                 <controls:AdControlView Grid.Row="1"
-                                HeightRequest="50"
-                                AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
-                                HorizontalOptions="FillAndExpand" />
-             <StackLayout Spacing="0"
-                     Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}">
-                <Label 
-                   x:Name="titulocolle"
-                   FontSize="Title"
-                   TextColor="{DynamicResource mainLabel}" 
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="StartAndExpand"/>
+            <controls:AdControlView
+                Grid.Row="1"
+                AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand" />
+            <StackLayout Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}" Spacing="0">
+                <Label
+                    x:Name="titulocolle"
+                    FontSize="Title"
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="{DynamicResource mainLabel}"
+                    VerticalOptions="CenterAndExpand" />
 
 
-                <BoxView 
-                     VerticalOptions="End"/>
 
                 <CollectionView
                     x:Name="ListaItems"
-                    SelectionMode="Single" 
                     SelectionChanged="AbrirItem"
-                    >
+                    SelectionMode="Single">
 
-                    
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout  Margin="0" VerticalOptions="CenterAndExpand">
-                                     
-                                     <Label
-                                                        FontSize="20"
-                                                        HorizontalOptions="Center"
-                                                        Text="{Binding nombre}"
-                                                        TextColor="Black"
-                                                        Margin="0,25,0,0"
-                                                        VerticalOptions="Start">
+                            <StackLayout Margin="0" VerticalOptions="CenterAndExpand">
 
-                                     </Label>
-  
-                                    <Frame
-                                                        CornerRadius="5"
-                                                        HasShadow="False"
-                                                        VerticalOptions="Center"
-                                                        IsClippedToBounds="True">
-                                        <Image
-                                                            Aspect="AspectFit"
-                                                            HeightRequest="150"
-                                                            Source="{Binding imagen}"
-                                                            WidthRequest="75" />
-                                    </Frame>
-                                  
-                                         
+                                <Label
+                                    Margin="0,25,0,0"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding nombre}"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+
+                                <Frame
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    IsClippedToBounds="True"
+                                    VerticalOptions="Center">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="150"
+                                        Source="{Binding imagen}"
+                                        WidthRequest="75" />
+                                </Frame>
+
+
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -86,13 +85,95 @@
 
                 </CollectionView>
             </StackLayout>
- 
-            <PanCake:PancakeView Grid.Row="2" Grid.Column="1" BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0">
-                <Button x:Name="botonAgregarItem" Clicked="click_agregar"  Text="Agregar Ítem" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="300"/>
-            </PanCake:PancakeView>
-            <PanCake:PancakeView Grid.Row="3" Grid.Column="1"  BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" >
-                <Button x:Name="botonAgregarCampoCustom" Clicked="agregar_campo_custom"  Text="Lista Campos Custom" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="300"/>
-            </PanCake:PancakeView>
+
+            <ScrollView>
+                <StackLayout>
+                    <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" /> 
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <PanCake:PancakeView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,0,0,0"
+                        BackgroundGradientEndColor="#55a0f3"
+                        BackgroundGradientStartColor="#6988f5"
+                        CornerRadius="28"
+                        HorizontalOptions="CenterAndExpand">
+                        <Button
+                            x:Name="botonAgregarItem"
+                            BackgroundColor="Transparent"
+                            Clicked="click_agregar"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HeightRequest="55"
+                            Text="Agregar Ítem"
+                            TextColor="White"
+                            WidthRequest="300" />
+                    </PanCake:PancakeView>
+                    <PanCake:PancakeView
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        BackgroundGradientEndColor="#55a0f3"
+                        BackgroundGradientStartColor="#6988f5"
+                        CornerRadius="28"
+                        HorizontalOptions="CenterAndExpand">
+                        <Button
+                            x:Name="botonAgregarCampoCustom"
+                            BackgroundColor="Transparent"
+                            Clicked="agregar_campo_custom"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HeightRequest="55"
+                            Text="Lista Campos Custom"
+                            TextColor="White"
+                            WidthRequest="300" />
+                    </PanCake:PancakeView>
+                    <PanCake:PancakeView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,0,0,0"
+                        BackgroundGradientEndColor="#55a0f3"
+                        BackgroundGradientStartColor="#6988f5"
+                        CornerRadius="28"
+                        HorizontalOptions="CenterAndExpand">
+                        <Button
+                            x:Name="botonModificar"
+                            BackgroundColor="Transparent"
+                            Clicked="modificar_coleccion"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HeightRequest="55"
+                            Text="Modificar Colección"
+                            TextColor="White"
+                            WidthRequest="300" />
+                    </PanCake:PancakeView>
+                    <PanCake:PancakeView
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        BackgroundGradientEndColor="#55a0f3"
+                        BackgroundGradientStartColor="#6988f5"
+                        CornerRadius="28"
+                        HorizontalOptions="CenterAndExpand">
+                        <Button
+                            x:Name="botonEliminar"
+                            BackgroundColor="Transparent"
+                            Clicked="eliminar_coleccion"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HeightRequest="55"
+                            Text="Eliminar Colección"
+                            TextColor="White"
+                            WidthRequest="300" />
+                    </PanCake:PancakeView>
+                </StackLayout>
+            </ScrollView>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

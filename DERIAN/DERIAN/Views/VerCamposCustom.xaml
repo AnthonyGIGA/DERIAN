@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             mc:Ignorable="d"
-             x:Class="DERIAN.Views.VerCamposCustom">
+<ContentPage
+    x:Class="DERIAN.Views.VerCamposCustom"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:DERIAN="clr-namespace:DERIAN"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:controls="clr-namespace:DERIAN.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
     <ContentPage.Resources>
         <Style TargetType="StackLayout">
@@ -24,61 +28,93 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <StackLayout BackgroundColor="#e5e5e5">
+            <StackLayout Margin="15,25,25,0">
 
-        <StackLayout Margin="15,25,25,0">
+                <StackLayout Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}" Spacing="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
 
-             
-            <StackLayout Spacing="0"
-                     Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}">
-                <Label Text="Mis Campos Custom"
-                   FontSize="Title"
-                   TextColor="{DynamicResource mainLabel}" 
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="StartAndExpand"/>
+                        <StackLayout Grid.Row="0">
+                            <controls:AdControlView
+                                Grid.Row="0"
+                                Margin="0,-10,0,20"
+                                AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
 
+                        <StackLayout Grid.Row="1" Margin="0,-70,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="240" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Entry
+                                        x:Name="EntryValor"
+                                        FontSize="16"
+                                        Placeholder="Nombre de Campo" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Margin="0,0,0,0">
+                                    <Button
+                                        x:Name="botonAgregarCampoCustom"
+                                        BackgroundColor="Transparent"
+                                        Clicked="agregar_campo"
+                                        FontAttributes="Bold"
+                                        HeightRequest="50"
+                                        ImageSource="ReAddIcon.png"
+                                        WidthRequest="50" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
 
-                <BoxView 
-                     VerticalOptions="End"/>
-
-                <CollectionView
-                    x:Name="ListaCampos"
-                    SelectionMode="Single"  
-                    >
-
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Margin="0" VerticalOptions="CenterAndExpand">
-                                <StackLayout Margin="0,-10,0,0">
-                                    <Frame
-                                                        CornerRadius="5"
-                                                        HasShadow="False"
-                                                        VerticalOptions="Center"
-                                                        IsClippedToBounds="True">
-                                         <Label
+                        <StackLayout Grid.Row="2" Margin="0,-140,0,0">
+                            <CollectionView x:Name="ListaCampos" SelectionMode="Single">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout VerticalOptions="CenterAndExpand">
+                                            <StackLayout Margin="0,5,0,0">
+                                                <Frame
+                                                    CornerRadius="5,5,5,5"
+                                                    HasShadow="False"
+                                                    IsClippedToBounds="True"
+                                                    VerticalOptions="Center">
+                                                    <Label
                                                         FontSize="16"
-                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="CenterAndExpand"
                                                         Text="{Binding nombre_campo}"
                                                         TextColor="Black"
-                                                        >
+                                                        VerticalTextAlignment="Center" />
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
 
-                                    </Label>
-                                    </Frame>
-                                </StackLayout>
- 
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                        <StackLayout Grid.Row="3" Margin="0,20,0,0">
+                            <Button
+                                x:Name="botonAgregarColeccion"
+                                BackgroundColor="#262626"
+                                Clicked="agregarColeccion"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Text="Agregar Colección"
+                                TextColor="#F29F2C"
+                                WidthRequest="20" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
             </StackLayout>
-
-
-            <PanCake:PancakeView x:Name="botonAgregarCampoCustom" Grid.Row="2" Grid.Column="1"  BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" >
-                <Button  Clicked="agregar_campo_custom"  Text="Agregar Campo Custom" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="300"/>
-            </PanCake:PancakeView>
         </StackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>

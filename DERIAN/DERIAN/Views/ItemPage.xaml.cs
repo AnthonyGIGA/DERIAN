@@ -15,9 +15,10 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemPage : ContentPage
     {
-        public int idItem, idColle; 
+        private int idItem, idColle; 
         public ItemPage()
-        { 
+        {
+            InitializeComponent();
         }
         
         public ItemPage(int iditem,int idcoll)
@@ -25,8 +26,6 @@ namespace DERIAN.Views
             this.idColle = idcoll;
             this.idItem = iditem; 
             InitializeComponent();
-
-
         }
 
         protected override async void OnAppearing()
@@ -47,10 +46,49 @@ namespace DERIAN.Views
                 ListaCampos.ItemsSource = db.Table<Campo_custom_item>().Where(u => u.IdItem.Equals(this.idItem));
 
             }
-
         }
 
-       
+        async void click_modificar(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new UpdateItemPage(this.idItem));
+        }
+
+        void DeleteItem_Clicked(object sender, System.EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var confirm = await this.DisplayAlert("Eliminar Ítem!", "Estás Seguro?", "OK", "Cancelar");
+
+                if (confirm)
+                {
+                    var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+                    var db = new SQLiteConnection(dbpath);
+
+                    var table = db.Table<ItemViewTable>();
+                    var toDelete = table.Where(x => x.Id == idItem).FirstOrDefault();
+                    if (toDelete != null)
+                    {
+                        db.Delete(toDelete);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            var result = await this.DisplayAlert("Eliminado!", "Ítem eliminado", "OK", "Cancelar");
+
+                            if (result)
+                                await Navigation.PopAsync();
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            var result = await this.DisplayAlert("Error!", "No se pudo eliminar", "OK", "Cancelar");
+                        });
+                    }
+
+                }
+            });
+                               
+        }
 
 
         private bool IsTableExists(string v)
@@ -73,7 +111,6 @@ namespace DERIAN.Views
             {
                 return false;
             }
-
         }
     }
 }

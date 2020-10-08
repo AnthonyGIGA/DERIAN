@@ -1,10 +1,12 @@
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\DERIAN.iOS.exe
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\DERIAN.iOS.pdb
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Plugin.Permissions.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\SQLite-net.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\SQLitePCLRaw.batteries_green.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\SQLitePCLRaw.batteries_v2.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\SQLitePCLRaw.core.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\SQLitePCLRaw.provider.sqlite3.dll
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Plugin.Media.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Xamarin.Essentials.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Xamarin.Essentials.pdb
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Xamarin.Forms.Core.dll
@@ -48,8 +50,12 @@ C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\De
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\zh-HK\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\zh-Hans\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\zh-Hant\Xamarin.Forms.Platform.iOS.resources.dll
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Xamarin.Forms.PancakeView.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\DERIAN.dll
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Mono.Android.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\DERIAN.pdb
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Mono.Android.pdb
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\bin\iPhone\Debug\Mono.Android.xml
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items

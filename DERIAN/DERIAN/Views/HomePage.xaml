@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:Tables="clr-namespace:DERIAN.Tables"
-             xmlns:fontawesome="clr-namespace:FontAwesome" xmlns:DERIAN="clr-namespace:DERIAN" 
-             xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:controls="clr-namespace:DERIAN.Controls"
-             mc:Ignorable="d"
-             x:Class="DERIAN.Views.HomePage">
+
+<ContentPage
+    x:Class="DERIAN.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:DERIAN="clr-namespace:DERIAN"
+    xmlns:Tables="clr-namespace:DERIAN.Tables"
+    xmlns:controls="clr-namespace:DERIAN.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
 
     <ContentPage.Resources>
@@ -29,11 +31,15 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <StackLayout BackgroundColor="#e5e5e5">
 
-        <StackLayout Margin="15,25,25,0">
-            
-            <StackLayout x:Name="ContenedorAd" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-              <!--   <Frame
+            <StackLayout Margin="15,25,25,0">
+
+                <StackLayout
+                    x:Name="ContenedorAd"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <!--   <Frame
                         Padding="0"
                         BackgroundColor="#F7F7F7"
                         CornerRadius="45"
@@ -51,93 +57,104 @@
                     </StackLayout>
                 </Frame>
                 <StackLayout>
-                    <Button ImageSource="Icon_Exit" 
+                    <Button ImageSource="Icon_Exit"
                             Margin="13,0,0,0"
                             HeightRequest="40"
-                            WidthRequest="40" 
-                            Clicked="Handle_Clicked" 
+                            WidthRequest="40"
+                            Clicked="Handle_Clicked"
                             ></Button>
- 
-                </StackLayout> -->
-            </StackLayout>
-            <StackLayout Spacing="0"
-                     Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}">
 
-                <Label Text="Mis Colecciones"
-                   FontSize="Title"
-                   TextColor="{DynamicResource mainLabel}" 
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="StartAndExpand"/>
-                 
+                </StackLayout>-->
+                </StackLayout>
+                <StackLayout Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}" Spacing="0">
 
-                <BoxView 
-                     VerticalOptions="End"/>
+                    <!--<Label
+                    FontSize="Title"
+                    HorizontalOptions="StartAndExpand"
+                    Text="Mis Colecciones"
+                    TextColor="{DynamicResource mainLabel}"
+                    VerticalOptions="CenterAndExpand" />-->
 
-                <CollectionView
-                    x:Name="ListaColecciones"
-                    SelectionMode="Single"
-                    SelectionChanged="AbrirColeccion"
-                    >
 
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" />
-                    </CollectionView.ItemsLayout>
+                    <!--<BoxView VerticalOptions="End" />-->
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Margin="0" HorizontalOptions="CenterAndExpand">
-                                <StackLayout>
-                                    <Frame
-                                                        CornerRadius="5"
-                                                        HasShadow="False"
-                                                        HorizontalOptions="Center"
-                                                        IsClippedToBounds="True">
-                                        <Image
-                                                            Aspect="AspectFit"
-                                                            HeightRequest="300"
-                                                            Source="{Binding imagen}"
-                                                            WidthRequest="265" />
-                                    </Frame>
+                    <controls:AdControlView
+                        Grid.Row="0"
+                        Margin="0,-20,0,20"
+                        AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand" />
+
+                    <CollectionView
+                        x:Name="ListaColecciones"
+                        Grid.Row="1"
+                        SelectionChanged="AbrirColeccion"
+                        SelectionMode="Single">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="0" HorizontalOptions="CenterAndExpand">
+                                    <StackLayout>
+                                        <Frame
+                                            CornerRadius="5"
+                                            HasShadow="False"
+                                            HorizontalOptions="Center"
+                                            IsClippedToBounds="True">
+                                            <Image
+                                                Aspect="AspectFit"
+                                                HeightRequest="300"
+                                                Source="{Binding imagen}"
+                                                WidthRequest="265" />
+                                        </Frame>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="0,5,0,0">
+                                        <Label
+                                            Margin="0,5,0,0"
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding nombre}"
+                                            TextColor="Black"
+                                            VerticalOptions="Start" />
+
+                                        <Label
+                                            FontSize="16"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding tipo}"
+                                            TextColor="#929292"
+                                            VerticalOptions="Start" />
+
+                                    </StackLayout>
+
                                 </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-                                <StackLayout Margin="0,-10,0,0">
-                                    <Label
-                                                        FontSize="20"
-                                                        HorizontalOptions="Center"
-                                                        Text="{Binding nombre}"
-                                                        TextColor="Black"
-                                                        VerticalOptions="Start">
-                                         
-                                    </Label>
+                </StackLayout>
 
-                                    <Label
-                                                        FontSize="16"
-                                                        HorizontalOptions="Center"
-                                                        Text="{Binding tipo}"
-                                                        TextColor="#929292"
-                                                        VerticalOptions="Start">
-                                       
-                                    </Label> 
 
-                                </StackLayout>
- 
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                
+
+                <Button
+                    x:Name="botonAgregarColle"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="0,0,0,30"
+                    BackgroundColor="#262626"
+                    Clicked="agregarColle"
+                    CornerRadius="28"
+                    FontSize="28"
+                    HeightRequest="60"
+                    HorizontalOptions="End"
+                    Text="+"
+                    TextColor="#F29F2C"
+                    WidthRequest="60" />
+
             </StackLayout>
-            
-
-
-            <PanCake:PancakeView x:Name="botonAgregarColle" Grid.Row="2" Grid.Column="1" BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" Margin="0,0,0,30">
-                <Button  Clicked="Handle_Clicked_1"  Text="Agregar Colección" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="250"/>
-            </PanCake:PancakeView>
-            <controls:AdControlView Grid.Row="1"
-                                HeightRequest="50"
-                                AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
-                                HorizontalOptions="FillAndExpand" />          
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

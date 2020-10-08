@@ -19,11 +19,13 @@ namespace DERIAN.Views
     {
         private ObservableCollection<CollectionViewTable> items = new ObservableCollection<CollectionViewTable>();
         private int iduser4;
+         
 
         public HomePage(int parametro1)
         {
             this.iduser4 = parametro1;
-                        
+
+            Title = "Colecciones";
 
             SetValue(NavigationPage.HasNavigationBarProperty, false);
              
@@ -55,11 +57,14 @@ namespace DERIAN.Views
             {
                 ListaColecciones.ItemsSource = db.Table<CollectionViewTable>().Where(u => u.IdUsuario.Equals(this.iduser4));
 
-                int Count = db.Table<CollectionViewTable>().Count();
-                if(Count >= 1)
-                {
-                    this.botonAgregarColle.IsVisible = false;
-                }
+                int Count = db.Table<CollectionViewTable>().Where(u => u.IdUsuario.Equals(this.iduser4)).Count();
+                //if (Count >= 1)
+                //{
+                //    this.botonAgregarColle.IsVisible = false;
+                //}
+                //else {
+                //    this.botonAgregarColle.IsVisible = true;
+                //}
 
             }
 
@@ -95,7 +100,7 @@ namespace DERIAN.Views
             App.ColleController.DeleteCollectionViewTable(model.Id);
         }
 
-        async void Handle_Clicked_1(object sender, System.EventArgs e)
+        async void agregarColle(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new AddCollectionPage(this.iduser4));
         }

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DERIAN.Views.UpdateCollectionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout
+                        Grid.Row="0"
+                        Margin="{OnPlatform Android='10, 10, 0, 0',
+                                            iOS='0'}"
+                        Spacing="0">
+                        <Label
+                            FontSize="Title"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Modificar Colección"
+                            TextColor="{DynamicResource mainLabel}"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Image x:Name="exampleimage" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2">
+                        <Entry
+                            x:Name="EntryName"
+                            FontSize="16"
+                            Placeholder="Nombre"
+                            Text="{Binding nombreColle}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3">
+                        <Entry
+                            x:Name="EntryType"
+                            FontSize="16"
+                            Placeholder="Tipo" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4">
+                        <PanCake:PancakeView
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="takeImage"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Cargar imagen"
+                                TextColor="White"
+                                WidthRequest="250" />
+                        </PanCake:PancakeView>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5">
+                        <PanCake:PancakeView
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="takePhoto"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Tomar foto"
+                                TextColor="White"
+                                WidthRequest="250" />
+                        </PanCake:PancakeView>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="6">
+                        <PanCake:PancakeView
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="botonModificarItem"
+                                BackgroundColor="Transparent"
+                                Clicked="modificar_Colle"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Modificar"
+                                TextColor="White"
+                                WidthRequest="250" />
+                        </PanCake:PancakeView>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="7">
+                        <Label x:Name="labelpath" FontSize="13" />
+                    </StackLayout>
+
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,32 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             mc:Ignorable="d"
-             x:Class="DERIAN.Views.LoginPage">
+<ContentPage
+    x:Class="DERIAN.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <Image VerticalOptions="CenterAndExpand" HeightRequest="180" WidthRequest="180"  Source="derian1.png"/>
+            <StackLayout BackgroundColor="#e5e5e5">
+                <Image
+                    HeightRequest="180"
+                    Margin="0,50,0,0"
+                    Source="derian1.png"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="180" />
 
-                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
+                <Grid
+                    Margin="20"
+                    RowSpacing="20"
+                    VerticalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition />
-                         <RowDefinition />
                         <RowDefinition />
-                        <RowDefinition /> 
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <Entry Placeholder="Usuario"  x:Name="EntryUserName" Grid.Row="0"/>
-                    <Entry Placeholder="Pin" x:Name="EntryPassword" IsPassword="True" Grid.Row="1"/>
-                    
-                    <PanCake:PancakeView  Grid.Row="2"   BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" >
-                        <Button Clicked="Handle_Clicked_1" Text="Acceder" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="250"/>
-                    </PanCake:PancakeView>
-                    <PanCake:PancakeView  Grid.Row="3"  x:Name="botonRegistro" BackgroundGradientStartColor="#6988f5" BackgroundGradientEndColor="#55a0f3" CornerRadius="28" HorizontalOptions="CenterAndExpand" >
-                        <Button  Clicked="Handle_Clicked"  Text="Registrarse" FontSize="20" FontAttributes="Bold" BackgroundColor="Transparent" HeightRequest="55" TextColor="White" WidthRequest="250"/>
-                    </PanCake:PancakeView>
+                    <Entry
+                        x:Name="EntryUserName"
+                        Grid.Row="0"
+                        Placeholder="Nombre de usuario" />
+                    <Entry
+                        x:Name="EntryPassword"
+                        Grid.Row="1"
+                        IsPassword="True"
+                        Placeholder="PIN" />
+
+
+                    <Button
+                        x:Name="botonAcceder"
+                        Grid.Row="2"
+                        BackgroundColor="#262626"
+                        Clicked="Handle_Clicked_1"
+                        FontSize="14"
+                        HeightRequest="45"
+                        Text="Acceder"
+                        TextColor="#F29F2C"
+                        WidthRequest="250" />
+
+                    <Button
+                        x:Name="botonRegistro"
+                        Grid.Row="2"
+                        BackgroundColor="#262626"
+                        Clicked="Handle_Clicked"
+                        FontSize="14"
+                        HeightRequest="45"
+                        Text="Registrarse"
+                        TextColor="#F29F2C"
+                        WidthRequest="20" />
+
+                    <Grid
+                        x:Name="botonRecuperar"
+                        Grid.Row="3"
+                        HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="Recuperar PIN"
+                            TextColor="#F29F2C"
+                            TextDecorations="Underline" />
+                        <Button
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            BackgroundColor="Transparent"
+                            Clicked="Recuperar_pin" />
+                    </Grid>
+
+                    <Label
+                        Grid.Row="4"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text="PRO v1.0"
+                        TextColor="Black" />
 
                 </Grid>
 

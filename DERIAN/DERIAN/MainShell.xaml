@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="DERIAN.MainShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:DERIAN"
+    xmlns:views="clr-namespace:DERIAN.Views"
+    x:Name="mainShell"
+    BackgroundColor="#262626"
+    ForegroundColor="#F29F2C"
+    TitleColor="#F29F2C"
+    mc:Ignorable="d">
+
+
+    <!--<Shell.SearchHandler>
+        <views:RecoverPin>
+
+        </views:RecoverPin>
+    </Shell.SearchHandler>-->
+
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="#262626" HeightRequest="200">
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding UserName}"
+                    TextColor="#F29F2C"
+                    VerticalOptions="Center" />
+
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <FlyoutItem Title="Perfil" Icon="profileicon.png">
+        <ShellContent>
+            <views:ProfilePage />
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Configuraciones" Icon="configIcon.png">
+        <ShellContent>
+            <views:ProfilePage />
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Respaldo" Icon="respaldoIcon.png"> 
+        <ShellContent>
+            <views:RecoverPin />
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Acerca de DERIAN" Icon="acercaIcon.png">
+        <ShellContent>
+            <views:AcercaDePage />
+        </ShellContent>
+    </FlyoutItem>
+    <!--<FlyoutItem Title="Colecciones">
+        <ShellContent x:Name="ContenidoShell">
+            <ShellContent.ContentTemplate>
+                <DataTemplate>
+                    <views:HomePage>
+                        <x:Arguments>
+                            <x:Int32 />
+                        </x:Arguments>
+                    </views:HomePage>
+                </DataTemplate>
+            </ShellContent.ContentTemplate>
+        </ShellContent>
+    </FlyoutItem>-->
+
+</Shell>
