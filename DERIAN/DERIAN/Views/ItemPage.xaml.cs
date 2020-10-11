@@ -15,17 +15,20 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemPage : ContentPage
     {
-        private int idItem, idColle; 
+        private string idItem;
+        private string idColle; 
+
         public ItemPage()
         {
             InitializeComponent();
         }
         
-        public ItemPage(int iditem,int idcoll)
+        public ItemPage(string iditem,string idcoll)
         {
             this.idColle = idcoll;
             this.idItem = iditem; 
             InitializeComponent();
+
         }
 
         protected override async void OnAppearing()
@@ -37,14 +40,35 @@ namespace DERIAN.Views
 
             if (IsTableExists("ItemViewTable") == true)
             {
-                nombreItem.Text = db.Table<ItemViewTable>().Where(u => u.Id.Equals(this.idItem)).FirstOrDefault().nombre;
+                Title = db.Table<ItemViewTable>().Where(u => u.Id.Equals(this.idItem)).FirstOrDefault().nombre;
                 imagenItem.Source = db.Table<ItemViewTable>().Where(u => u.Id.Equals(this.idItem)).FirstOrDefault().imagen;
+            }
+            //if (IsTableExists("Campo_custom_item") == true)
+            //{
+            //    ListaCampos.ItemsSource = db.Table<Campo_custom_item>().Where(u => u.IdItem.Equals(this.idItem));
+            //}
 
-            } 
-            if (IsTableExists("Campo_custom_item") == true)
+            List<Campo_custom> nombrescampos =
+               db.Query<Campo_custom>("SELECT nombre_campo FROM Campo_custom WHERE IdColeccion = ?", this.idColle);
+            List<Campo_custom_item> valorcampos =
+                            db.Query<Campo_custom_item>("SELECT valor FROM Campo_custom_item WHERE IdItem = ?", this.idItem);
+
+            for (int i = 0; i < nombrescampos.Count(); i++)
             {
-                ListaCampos.ItemsSource = db.Table<Campo_custom_item>().Where(u => u.IdItem.Equals(this.idItem));
-
+                Label nuevoEntry1 = new Label();
+                try
+                {
+                    nuevoEntry1.Text = nombrescampos[i].nombre_campo;
+                }
+                catch (Exception e) { }
+                Label nuevoEntry2 = new Label();
+                try
+                {
+                    nuevoEntry2.Text = valorcampos[i].valor;
+                }
+                catch (Exception e) { }
+                ListaCampos.Children.Add(nuevoEntry1);
+                ListaCampos.Children.Add(nuevoEntry2);
             }
         }
 

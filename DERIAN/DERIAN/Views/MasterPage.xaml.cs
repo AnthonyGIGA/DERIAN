@@ -34,7 +34,7 @@ namespace DERIAN.Views
         }
 
         void Init() {
-            Detail = new NavigationPage(new ItemPage(this.idItem, this.idColle));
+            //Detail = new NavigationPage(new ItemPage(this.idItem, this.idColle));
         }
 
         public void CloseThisMaster(){
@@ -52,25 +52,20 @@ namespace DERIAN.Views
             base.OnAppearing();
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
             var db = new SQLiteConnection(dbpath);
-
             
             if (IsTableExists("Campo_custom") == true)
             {
                 ListaCustom.ItemsSource = db.Table<Campo_custom>().Where(u => u.IdColeccion.Equals(this.idColle));
 
-            }
-          
-
+            }          
         }
 
         async void AbrirCustom(object sender, SelectionChangedEventArgs e)
         {
+            //string idcustom = (e.CurrentSelection.FirstOrDefault() as Campo_custom).Id;
+            //int iditemu = idItem;
 
-            int idcustom = (e.CurrentSelection.FirstOrDefault() as Campo_custom).Id;
-            int iditemu = idItem;
-
-            await Navigation.PushAsync(new AddCustomItemPage(idcustom, iditemu));
-
+            //await Navigation.PushAsync(new AddCustomItemPage(idcustom, iditemu));
         }
 
 

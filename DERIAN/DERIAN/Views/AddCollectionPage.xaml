@@ -8,6 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="#e5e5e5">
@@ -85,7 +86,6 @@
                                 </Grid>
                             </StackLayout>
                         </Grid>
-
                     </StackLayout>
 
                     <StackLayout Grid.Row="6">
@@ -103,9 +103,7 @@
                         x:Name="labelpath"
                         FontSize="13"
                         Text="derian2.png" />
-
                 </Grid>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

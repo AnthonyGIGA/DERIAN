@@ -28,152 +28,122 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        <StackLayout BackgroundColor="#e5e5e5">
+            <StackLayout Margin="15,25,25,0">
+                <controls:AdControlView
+                    Grid.Row="1"
+                    AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand" />
+                <StackLayout Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}" Spacing="0">
 
-        <StackLayout Margin="15,25,25,0">
-            <controls:AdControlView
-                Grid.Row="1"
-                AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
-                HeightRequest="50"
-                HorizontalOptions="FillAndExpand" />
-            <StackLayout Margin="{OnPlatform Android='10, 10, 0, 0', iOS='0'}" Spacing="0">
-                <Label
-                    x:Name="titulocolle"
-                    FontSize="Title"
-                    HorizontalOptions="StartAndExpand"
-                    TextColor="{DynamicResource mainLabel}"
-                    VerticalOptions="CenterAndExpand" />
-
+                    <CollectionView
+                        x:Name="ListaItems"
+                        SelectionChanged="AbrirItem"
+                        SelectionMode="Single">
 
 
-                <CollectionView
-                    x:Name="ListaItems"
-                    SelectionChanged="AbrirItem"
-                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="0" VerticalOptions="CenterAndExpand">
+
+                                    <Label
+                                        Margin="0,25,0,0"
+                                        FontSize="20"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding nombre}"
+                                        TextColor="Black"
+                                        VerticalOptions="Start" />
+
+                                    <Frame
+                                        CornerRadius="5"
+                                        HasShadow="False"
+                                        IsClippedToBounds="True"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Aspect="AspectFit"
+                                            HeightRequest="150"
+                                            Source="{Binding imagen}"
+                                            WidthRequest="75" />
+                                    </Frame>
 
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Margin="0" VerticalOptions="CenterAndExpand">
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
 
-                                <Label
-                                    Margin="0,25,0,0"
-                                    FontSize="20"
-                                    HorizontalOptions="Center"
-                                    Text="{Binding nombre}"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-
-                                <Frame
-                                    CornerRadius="5"
-                                    HasShadow="False"
-                                    IsClippedToBounds="True"
-                                    VerticalOptions="Center">
-                                    <Image
-                                        Aspect="AspectFit"
-                                        HeightRequest="150"
-                                        Source="{Binding imagen}"
-                                        WidthRequest="75" />
-                                </Frame>
-
-
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
-                    </CollectionView.ItemsLayout>
-
-                </CollectionView>
-            </StackLayout>
-
-            <ScrollView>
-                <StackLayout>
-                    <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" /> 
-                        </Grid.RowDefinitions>
-                    </Grid>
-                    <PanCake:PancakeView
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Margin="0,0,0,0"
-                        BackgroundGradientEndColor="#55a0f3"
-                        BackgroundGradientStartColor="#6988f5"
-                        CornerRadius="28"
-                        HorizontalOptions="CenterAndExpand">
-                        <Button
-                            x:Name="botonAgregarItem"
-                            BackgroundColor="Transparent"
-                            Clicked="click_agregar"
-                            FontAttributes="Bold"
-                            FontSize="20"
-                            HeightRequest="55"
-                            Text="Agregar Ítem"
-                            TextColor="White"
-                            WidthRequest="300" />
-                    </PanCake:PancakeView>
-                    <PanCake:PancakeView
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        BackgroundGradientEndColor="#55a0f3"
-                        BackgroundGradientStartColor="#6988f5"
-                        CornerRadius="28"
-                        HorizontalOptions="CenterAndExpand">
-                        <Button
-                            x:Name="botonAgregarCampoCustom"
-                            BackgroundColor="Transparent"
-                            Clicked="agregar_campo_custom"
-                            FontAttributes="Bold"
-                            FontSize="20"
-                            HeightRequest="55"
-                            Text="Lista Campos Custom"
-                            TextColor="White"
-                            WidthRequest="300" />
-                    </PanCake:PancakeView>
-                    <PanCake:PancakeView
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="0,0,0,0"
-                        BackgroundGradientEndColor="#55a0f3"
-                        BackgroundGradientStartColor="#6988f5"
-                        CornerRadius="28"
-                        HorizontalOptions="CenterAndExpand">
-                        <Button
-                            x:Name="botonModificar"
-                            BackgroundColor="Transparent"
-                            Clicked="modificar_coleccion"
-                            FontAttributes="Bold"
-                            FontSize="20"
-                            HeightRequest="55"
-                            Text="Modificar Colección"
-                            TextColor="White"
-                            WidthRequest="300" />
-                    </PanCake:PancakeView>
-                    <PanCake:PancakeView
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        BackgroundGradientEndColor="#55a0f3"
-                        BackgroundGradientStartColor="#6988f5"
-                        CornerRadius="28"
-                        HorizontalOptions="CenterAndExpand">
-                        <Button
-                            x:Name="botonEliminar"
-                            BackgroundColor="Transparent"
-                            Clicked="eliminar_coleccion"
-                            FontAttributes="Bold"
-                            FontSize="20"
-                            HeightRequest="55"
-                            Text="Eliminar Colección"
-                            TextColor="White"
-                            WidthRequest="300" />
-                    </PanCake:PancakeView>
+                    </CollectionView>
                 </StackLayout>
-            </ScrollView>
+                <StackLayout>
+                    <Button
+                        x:Name="botonAgregarColle"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0,0,0,30"
+                        BackgroundColor="#262626"
+                        Clicked="click_agregar"
+                        CornerRadius="28"
+                        FontSize="28"
+                        HeightRequest="60"
+                        HorizontalOptions="End"
+                        Text="+"
+                        TextColor="#F29F2C"
+                        WidthRequest="60" />
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout>
+                        <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                        </Grid>
+                        <PanCake:PancakeView
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="0,0,0,0"
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="botonModificar"
+                                BackgroundColor="Transparent"
+                                Clicked="modificar_coleccion"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Modificar Colección"
+                                TextColor="White"
+                                WidthRequest="300" />
+                        </PanCake:PancakeView>
+                        <PanCake:PancakeView
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BackgroundGradientEndColor="#55a0f3"
+                            BackgroundGradientStartColor="#6988f5"
+                            CornerRadius="28"
+                            HorizontalOptions="CenterAndExpand">
+                            <Button
+                                x:Name="botonEliminar"
+                                BackgroundColor="Transparent"
+                                Clicked="eliminar_coleccion"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HeightRequest="55"
+                                Text="Eliminar Colección"
+                                TextColor="White"
+                                WidthRequest="300" />
+                        </PanCake:PancakeView>
+                    </StackLayout>
+                </ScrollView>
 
-
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

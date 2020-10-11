@@ -16,18 +16,17 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CollectionPage : ContentPage
     {
-        public int idcolle, idusu;
-        public string nombrecolle;
+        public int idusu;
+
+        public string nombrecolle, idcolle ;
         public CollectionPage()
         { }
-        public CollectionPage(int idColeccion,string nombrecolleccion , int idUsuario)
+        public CollectionPage(string  idColeccion, string nombrecolleccion, int idUsuario)
         {
             this.nombrecolle = nombrecolleccion;
             this.idcolle = idColeccion;
             this.idusu = idUsuario;
             InitializeComponent();
-
-
         }
 
         protected override async void OnAppearing()
@@ -36,14 +35,11 @@ namespace DERIAN.Views
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
             var db = new SQLiteConnection(dbpath);
 
-
             if (IsTableExists("ItemViewTable") == true)
             {
-                this.titulocolle.Text = nombrecolle;
+                Title = nombrecolle;
                 ListaItems.ItemsSource = db.Table<ItemViewTable>().Where(u => u.IdColeccion.Equals(this.idcolle));                 
-
             }
-
         }
 
         async void click_agregar(object sender, System.EventArgs e)
@@ -52,7 +48,7 @@ namespace DERIAN.Views
         }
         async void modificar_coleccion(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new UpdateCollectionPage(this.idcolle, this.nombrecolle));
+            //await Navigation.PushAsync(new UpdateCollectionPage(this.idcolle, this.nombrecolle));
         } 
 
         void eliminar_coleccion(object sender, System.EventArgs e)
@@ -86,26 +82,21 @@ namespace DERIAN.Views
                             var result = await this.DisplayAlert("Error!", "No se pudo eliminar", "OK", "Cancelar");
                         });
                     }
-
                 }
             });
-
         }
-
 
 
         async void agregar_campo_custom(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new VerCamposCustom(this.idcolle));
+            //await Navigation.PushAsync(new VerCamposCustom(this.idcolle));
         }
 
         async void AbrirItem(object sender, SelectionChangedEventArgs e)
         {
+            string current = (e.CurrentSelection.FirstOrDefault() as ItemViewTable).Id;
 
-            int current = (e.CurrentSelection.FirstOrDefault() as ItemViewTable).Id;
-
-            await Navigation.PushAsync(new MasterPage(current, this.idcolle));
-
+            await Navigation.PushAsync(new ItemPage(current, this.idcolle));
         }
 
         private bool IsTableExists(string v)

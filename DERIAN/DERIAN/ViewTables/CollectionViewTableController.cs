@@ -36,21 +36,21 @@ namespace DERIAN.ViewTables
             }
         }
 
-        public int SaveCollectionViewTable(CollectionViewTable item)
-        {
-            lock (locker)
-            {
-                if (item.Id != 0)
-                {
-                    this.database.Update(item);
-                    return item.Id;
-                }
-                else
-                {
-                    return this.database.Insert(item); 
-                }
-            }
-        }
+        //public int SaveCollectionViewTable(CollectionViewTable item)
+        //{
+        //    lock (locker)
+        //    {
+        //        if (item.Id != 0)
+        //        {
+        //            this.database.Update(item);
+        //            return item.Id;
+        //        }
+        //        else
+        //        {
+        //            return this.database.Insert(item); 
+        //        }
+        //    }
+        //}
 
         public int DeleteCollectionViewTable(int id)
         {

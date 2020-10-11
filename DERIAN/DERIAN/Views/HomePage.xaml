@@ -137,8 +137,6 @@
 
                 </StackLayout>
 
-
-
                 <Button
                     x:Name="botonAgregarColle"
                     Grid.Row="2"

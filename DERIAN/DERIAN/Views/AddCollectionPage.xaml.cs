@@ -18,6 +18,8 @@ namespace DERIAN.Views
     public partial class AddCollectionPage : ContentPage
     {
         private int idusu;
+        //Random generator = new Random();
+
         public AddCollectionPage()
         { }
         public AddCollectionPage(int Idusuario)
@@ -129,6 +131,7 @@ namespace DERIAN.Views
 
                 var item = new CollectionViewTable()
                 {
+                    Id = DateTime.Now.ToString(),
                     nombre = EntryName.Text,
                     tipo = EntryType.Text,
                     imagen = labelpath.Text,
@@ -136,13 +139,13 @@ namespace DERIAN.Views
                     IdUsuario = this.idusu
                 };
 
-                db.Insert(item);
+                //db.Insert(item);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //var result = await this.DisplayAlert("Agregada!", "Colección agregada con la ID: " + item.Id, "OK", "Cancelar");
 
                     //if (result)
-                    await Navigation.PushAsync(new VerCamposCustom(item.Id));
+                    await Navigation.PushAsync(new VerCamposCustom(item));
                     //await Navigation.PopAsync();
                 });
             }

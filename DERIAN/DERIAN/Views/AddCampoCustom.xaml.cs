@@ -53,7 +53,7 @@ namespace DERIAN.Views
             var item = new Campo_custom()
             {
                 nombre_campo = EntryValor.Text, 
-                IdColeccion = this.idcollect
+                //IdColeccion = this.idcollect
 
             };
 

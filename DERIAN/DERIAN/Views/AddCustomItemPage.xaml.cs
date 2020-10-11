@@ -15,12 +15,13 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCustomItemPage : ContentPage
     {
-        private int idItem, idCus;
+        private int idItem;
+            private string idCus;
         public AddCustomItemPage()
         {
         }
 
-        public AddCustomItemPage(int idcustom, int iditemu)
+        public AddCustomItemPage(string idcustom, int iditemu)
         {
             this.idItem = iditemu;
             this.idCus = idcustom;
@@ -56,8 +57,8 @@ namespace DERIAN.Views
             var valorCustom = new Campo_custom_item()
             {
                 valor = propiedad+": "+EntryValor.Text,
-                IdCampoCustom = this.idCus,
-                IdItem = this.idItem
+                //IdCampoCustom = this.idCus,
+                //IdItem = this.idItem
 
             };
 

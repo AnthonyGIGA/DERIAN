@@ -11,7 +11,7 @@ namespace DERIAN.Tables
         [AutoIncrement]
         public int Id { get; set; }
         public string valor { get; set; } 
-        public int IdItem { get; set; }
+        public string IdItem { get; set; }
         public int IdCampoCustom { get; set; }
     }
 }

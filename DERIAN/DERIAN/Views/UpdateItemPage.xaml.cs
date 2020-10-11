@@ -16,14 +16,14 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateItemPage : ContentPage
     {
-        private int idItem;
+        private string idItem;
 
         public UpdateItemPage()
         {
             InitializeComponent();
         }
 
-        public UpdateItemPage(int iditem)
+        public UpdateItemPage(string iditem)
         {
             this.idItem = iditem; 
             InitializeComponent();

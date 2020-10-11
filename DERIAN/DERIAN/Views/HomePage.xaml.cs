@@ -92,13 +92,13 @@ namespace DERIAN.Views
             }
 
         }
-        public void OnDelete(object sender, System.EventArgs e)
-        {
-            var item = (MenuItem)sender;
-            var model = (CollectionViewTable)item.CommandParameter;
-            this.items.Remove(model);
-            App.ColleController.DeleteCollectionViewTable(model.Id);
-        }
+        //public void OnDelete(object sender, System.EventArgs e)
+        //{
+        //    var item = (MenuItem)sender;
+        //    var model = (CollectionViewTable)item.CommandParameter;
+        //    this.items.Remove(model);
+        //    App.ColleController.DeleteCollectionViewTable(model.Id);
+        //}
 
         async void agregarColle(object sender, System.EventArgs e)
         {
@@ -112,7 +112,7 @@ namespace DERIAN.Views
         async void AbrirColeccion(object sender, SelectionChangedEventArgs e)
         {
 
-            int idcolle = (e.CurrentSelection.FirstOrDefault() as CollectionViewTable).Id;
+            string idcolle = (e.CurrentSelection.FirstOrDefault() as CollectionViewTable).Id;
             string nombrecolle = (e.CurrentSelection.FirstOrDefault() as CollectionViewTable).nombre;
 
             await Navigation.PushAsync(new CollectionPage(idcolle, nombrecolle, this.iduser4));
