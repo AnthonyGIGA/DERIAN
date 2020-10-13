@@ -1,15 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="launcher_background">#FFFFFF</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="primaryDark">#1230D2</color> 
-    <color name="blackTriton">#262626</color>
-    <color name="orangeTriton">#F29F2C</color> 
-    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"> 
+<resources><color name="launcher_background">#FFFFFF</color><color name="colorPrimary">#3F51B5</color><color name="colorPrimaryDark">#303F9F</color><color name="colorAccent">#FF4081</color><color name="primaryDark">#1230D2</color><color name="blackTriton">#262626</color><color name="orangeTriton">#F29F2C</color><!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"> 
 	    <item name="colorPrimaryDark">@color/primaryDark</item> 
 	    <item name="android:windowActionModeOverlay">true</item> 
-	</style>--> 
-
-</resources>  
+	</style>--></resources>

@@ -17,19 +17,50 @@ namespace DERIAN.Views
     public partial class UpdateItemPage : ContentPage
     {
         private string idItem;
+        private string idColle;
 
         public UpdateItemPage()
         {
             InitializeComponent();
         }
 
-        public UpdateItemPage(string iditem)
+        public UpdateItemPage(string iditem, string idcolle)
         {
-            this.idItem = iditem; 
+            this.idItem = iditem;
+            this.idColle = idcolle;
             InitializeComponent();
 
             this.labelpath.IsVisible = false;
-             
+
+            var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+            var db = new SQLiteConnection(dbpath);
+
+            string imagenfirst = db.Table<ItemViewTable>().Where(u => u.Id.Equals(this.idItem)).FirstOrDefault().imagen;
+            exampleimage.Source = imagenfirst;
+            labelpath.Text = imagenfirst;
+            EntryName.Text = db.Table<ItemViewTable>().Where(u => u.Id.Equals(this.idItem)).FirstOrDefault().nombre;
+
+            List<Campo_custom> nombrescampos =
+                db.Query<Campo_custom>("SELECT nombre_campo FROM Campo_custom WHERE IdColeccion = ?", this.idColle);
+            List<Campo_custom_item> valorescampos =
+                db.Query<Campo_custom_item>("SELECT valor FROM Campo_custom_item WHERE IdItem = ?", this.idItem);
+            List<Campo_custom_item> idscampos =
+                            db.Query<Campo_custom_item>("SELECT Id FROM Campo_custom_item WHERE IdItem = ?", this.idItem);
+
+            for (int i = 0; i < nombrescampos.Count(); i++)
+            {
+                Entry nuevoEntry = new Entry();
+                try
+                {
+                    nuevoEntry.Placeholder = nombrescampos[i].nombre_campo;
+                    nuevoEntry.StyleId = idscampos[i].Id.ToString();
+                    nuevoEntry.Text = valorescampos[i].valor;
+                }
+                catch (Exception e) { }
+                camposCustom.Children.Add(nuevoEntry);
+            }
+
+            Title = "Modificar Objeto";
 
             takePhoto.Clicked += async (sender, args) =>
             {
@@ -177,7 +208,17 @@ namespace DERIAN.Views
                 var db = new SQLiteConnection(dbpath);
 
                 db.CreateTable<ItemViewTable>();
-                db.Query<ItemViewTable>("Update ItemViewTable set nombre ='" + EntryName.Text + "', imagen='" + labelpath.Text + "' WHERE Id = " + this.idItem + "");
+                db.Query<ItemViewTable>("Update ItemViewTable set nombre ='" + EntryName.Text + "', imagen='" + labelpath.Text + "' WHERE Id = '" + this.idItem + "'");
+
+                foreach (Entry entry in camposCustom.Children)
+                {
+                    var valorCustoms = new Campo_custom_item()
+                    {
+                        valor = entry.Text,
+                        Id = Int32.Parse(entry.StyleId), 
+                    }; 
+                    db.Query<Campo_custom_item>("Update Campo_custom_item set valor ='" + valorCustoms.valor + "' WHERE Id = " + valorCustoms.Id + "");
+                }
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {

@@ -75,7 +75,10 @@
                         </StackLayout>
 
                         <StackLayout Grid.Row="2" Margin="0,-140,0,0">
-                            <CollectionView x:Name="ListaCampos" SelectionMode="Single">
+                            <CollectionView
+                                x:Name="ListaCampos"
+                                SelectionChanged="BorrarCampoCustom"
+                                SelectionMode="Single">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout VerticalOptions="CenterAndExpand">

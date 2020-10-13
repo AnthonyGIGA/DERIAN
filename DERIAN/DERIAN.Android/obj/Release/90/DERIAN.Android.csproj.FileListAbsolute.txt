@@ -457,3 +457,5 @@ C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Relea
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\90\res\drawable\galeria.png
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\90\res\drawable\camara.png
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\90\res\drawable\readdicon.png
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\90\res\drawable\delete.png
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Release\90\res\drawable\edit2.png

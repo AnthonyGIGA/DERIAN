@@ -86,6 +86,9 @@ C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\configicon.png
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\galeria.png
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\camara.png
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\readdicon.png
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\delete.png
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\edit2.png
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\uploadflags.txt
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\resolvedassemblies.hash
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\android\assets\DERIAN.Android.dll
@@ -579,4 +582,3 @@ C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN.Android\obj\Debug\90\res\drawable\readdicon.png

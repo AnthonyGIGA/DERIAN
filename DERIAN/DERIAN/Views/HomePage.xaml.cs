@@ -65,9 +65,7 @@ namespace DERIAN.Views
                 //else {
                 //    this.botonAgregarColle.IsVisible = true;
                 //}
-
             }
-
         }
 
         private bool IsTableExists(string v)

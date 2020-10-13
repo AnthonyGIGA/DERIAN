@@ -5,7 +5,6 @@ C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\bin\Debug\netstan
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\bin\Debug\netstandard2.0\Mono.Android.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\bin\Debug\netstandard2.0\Mono.Android.pdb
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\bin\Debug\netstandard2.0\Mono.Android.xml
-C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\DERIAN.csprojAssemblyReference.cache
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\HeaderContentView.xaml.g.cs
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
@@ -38,3 +37,4 @@ C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstan
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\DERIAN.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\ref\DERIAN.dll
 C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\DERIAN.pdb
+C:\Users\GIGA\Documents\Proyectos Xamarin\DERIAN\DERIAN\DERIAN\obj\Debug\netstandard2.0\DERIAN.csprojAssemblyReference.cache

@@ -48,7 +48,7 @@ namespace DERIAN.Views
         }
         async void modificar_coleccion(object sender, System.EventArgs e)
         {
-            //await Navigation.PushAsync(new UpdateCollectionPage(this.idcolle, this.nombrecolle));
+            await Navigation.PushAsync(new UpdateCollectionPage(this.idcolle, this.nombrecolle));
         } 
 
         void eliminar_coleccion(object sender, System.EventArgs e)

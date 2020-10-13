@@ -145,6 +145,43 @@ namespace DERIAN.Views
             {
                 return false;
             }
+        }
+
+        async void BorrarCampoCustom(object sender, SelectionChangedEventArgs e)
+        {
+            int idCampo= (e.CurrentSelection.FirstOrDefault() as Campo_custom).Id;
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var confirm = await this.DisplayAlert("Eliminar Campo!", "Estás Seguro?", "OK", "Cancelar");
+
+                if (confirm)
+                {
+                    var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+                    var db = new SQLiteConnection(dbpath);
+
+                    var table = db.Table<Campo_custom>();
+                    var toDelete = table.Where(x => x.Id == idCampo).FirstOrDefault();
+                    if (toDelete != null)
+                    {
+                        db.Delete(toDelete);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        { 
+                            this.recarga = true;
+                            var vUpdatedPage = new VerCamposCustom(this.objetoColeccion);
+                            Navigation.InsertPageBefore(vUpdatedPage, this);
+                            Navigation.PopAsync();
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            var result = await this.DisplayAlert("Error!", "No se pudo eliminar", "OK", "Cancelar");
+                        });
+                    }
+                }
+            });
 
         }
 

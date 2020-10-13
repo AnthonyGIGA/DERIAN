@@ -28,74 +28,83 @@
 
     <ContentPage.Content>
         <StackLayout BackgroundColor="#e5e5e5">
-            <StackLayout>
-                <controls:AdControlView
-                    AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
-                    HeightRequest="50"
-                    HorizontalOptions="FillAndExpand" />
-            </StackLayout>
+            <StackLayout Margin="15,25,25,0">
+                <StackLayout>
+                    <controls:AdControlView
+                        AdUnitId="{Static DERIAN:Constants.AdUnitIdTest}"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand" />
+                </StackLayout>
 
-            <StackLayout Margin="15,5,25,0">
-                <StackLayout Margin="{OnPlatform Android='10, 10, 30, 0', iOS='0'}" Spacing="0">
+                <StackLayout>
+                    <StackLayout Margin="{OnPlatform Android='10, 10, 10, 0', iOS='0'}" Spacing="0">
 
-                    <StackLayout>
-                        <Frame
-                            CornerRadius="5"
-                            HasShadow="False"
-                            HorizontalOptions="Center"
-                            IsClippedToBounds="True">
-                            <Image
-                                x:Name="imagenItem"
-                                Aspect="AspectFit"
-                                HeightRequest="-1"
-                                WidthRequest="350" />
-                        </Frame>
-                        <StackLayout Grid.Row="2" HeightRequest="300">
-                            <ScrollView>
-                                <StackLayout x:Name="ListaCampos" />
-                            </ScrollView>
+                        <StackLayout>
+                            <Frame
+                                CornerRadius="5"
+                                HasShadow="False"
+                                HeightRequest="200"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True">
+                                <Image
+                                    x:Name="imagenItem"
+                                    Aspect="AspectFit"
+                                    HeightRequest="-1"
+                                    WidthRequest="350" />
+                            </Frame>
+                            <StackLayout
+                                Grid.Row="2"
+                                Margin="15,10,15,10"
+                                HeightRequest="300">
+                                <ScrollView>
+                                    <StackLayout x:Name="ListaCampos" />
+                                </ScrollView>
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
 
-                    <StackLayout Margin="5,2,0,2">
-                        <PanCake:PancakeView
-                            BackgroundGradientEndColor="#55a0f3"
-                            BackgroundGradientStartColor="#6988f5"
-                            CornerRadius="28"
-                            HorizontalOptions="CenterAndExpand">
-                            <Button
-                                x:Name="botonModificarItem"
-                                BackgroundColor="Transparent"
-                                Clicked="click_modificar"
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                HeightRequest="55"
-                                Text="Modificar Ítem"
-                                TextColor="White"
-                                WidthRequest="250" />
-                        </PanCake:PancakeView>
-                    </StackLayout>
+                        <StackLayout Margin="5,2,0,2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
 
-                    <StackLayout Margin="5,2,0,2">
-                        <PanCake:PancakeView
-                            BackgroundGradientEndColor="#55a0f3"
-                            BackgroundGradientStartColor="#6988f5"
-                            CornerRadius="28"
-                            HorizontalOptions="CenterAndExpand">
-                            <Button
-                                x:Name="botonEliminarItem"
-                                BackgroundColor="Transparent"
-                                Clicked="DeleteItem_Clicked"
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                HeightRequest="55"
-                                Text="Eliminar Ítem"
-                                TextColor="White"
-                                WidthRequest="250" />
-                        </PanCake:PancakeView>
+                                <StackLayout Grid.Row="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="200" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button
+                                            x:Name="botonEliminarItem"
+                                            Grid.Column="0"
+                                            Margin="0,0,0,30"
+                                            BackgroundColor="Transparent"
+                                            Clicked="DeleteItem_Clicked"
+                                            HeightRequest="50"
+                                            HorizontalOptions="Start"
+                                            ImageSource="delete.png"
+                                            WidthRequest="50" />
+                                        <Button
+                                            x:Name="botonModificarItem"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,30"
+                                            BackgroundColor="Transparent"
+                                            Clicked="click_modificar"
+                                            HeightRequest="50"
+                                            HorizontalOptions="Start"
+                                            ImageSource="edit2.png"
+                                            WidthRequest="50" />
+                                        <StackLayout Grid.Column="2" />
+                                    </Grid>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

@@ -16,7 +16,7 @@ namespace DERIAN.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateCollectionPage : ContentPage
     {
-        private int idColle;
+        private string idColle;
         private String nombreColle;
 
         public UpdateCollectionPage()
@@ -24,14 +24,24 @@ namespace DERIAN.Views
             InitializeComponent();
         }
 
-        public UpdateCollectionPage(int idcolle, String nombrecolle)
+        public UpdateCollectionPage(string idcolle, String nombrecolle)
         {
             this.idColle = idcolle;
             this.nombreColle = nombrecolle;
             InitializeComponent();
-
             this.labelpath.IsVisible = false;
 
+            var dbpath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
+            var db = new SQLiteConnection(dbpath);
+
+            string imagenfirst = db.Table<CollectionViewTable>().Where(u => u.Id.Equals(this.idColle)).FirstOrDefault().imagen;
+            exampleimage.Source = imagenfirst;
+            labelpath.Text = imagenfirst;
+            EntryName.Text = db.Table<CollectionViewTable>().Where(u => u.Id.Equals(this.idColle)).FirstOrDefault().nombre;
+            EntryType.Text = db.Table<CollectionViewTable>().Where(u => u.Id.Equals(this.idColle)).FirstOrDefault().tipo;
+
+
+            Title = "Modificar Colección";
 
             takePhoto.Clicked += async (sender, args) =>
             {
@@ -42,60 +52,45 @@ namespace DERIAN.Views
                     await DisplayAlert("No Camera", ":( No camera available.", "OK");
                     return;
                 }
-
                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
                     Directory = "Sample",
                     Name = "image.jpg"
                 });
-
                 if (file == null)
                     return;
-
                 await DisplayAlert("File Location", file.Path, "OK");
-
                 labelpath.Text = file.Path;
                 exampleimage.Source = ImageSource.FromStream(() =>
                 {
                     var stream = file.GetStream();
                     return stream;
                 });
-
-
             };
-
             takeImage.Clicked += async (sender, args) =>
             {
                 await CrossMedia.Current.Initialize();
-
                 if (!CrossMedia.Current.IsPickPhotoSupported)
                 {
                     await DisplayAlert("Error", "Subida de imagen no soportada.", "OK");
                     return;
                 }
-
                 var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
                 {
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
                     CompressionQuality = 40
                 });
-
                 if (file == null)
                     return;
-
-
                 labelpath.Text = file.Path;
                 exampleimage.Source = ImageSource.FromStream(() =>
                 {
                     var stream = file.GetStream();
                     return stream;
                 });
-
-
             };
 
         }
-
 
 
         protected override async void OnAppearing()
@@ -154,7 +149,7 @@ namespace DERIAN.Views
                 var db = new SQLiteConnection(dbpath);
 
                 db.CreateTable<CollectionViewTable>();
-                db.Query<CollectionViewTable>("Update CollectionViewTable set nombre ='" + EntryName.Text + "', tipo='" + EntryType.Text + "', imagen='" + labelpath.Text + "' WHERE Id = " + this.idColle + "");
+                db.Query<CollectionViewTable>("Update CollectionViewTable set nombre ='" + EntryName.Text + "', tipo='" + EntryType.Text + "', imagen='" + labelpath.Text + "' WHERE Id = '" + this.idColle + "'");
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {

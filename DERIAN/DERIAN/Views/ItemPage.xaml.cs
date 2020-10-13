@@ -52,19 +52,23 @@ namespace DERIAN.Views
                db.Query<Campo_custom>("SELECT nombre_campo FROM Campo_custom WHERE IdColeccion = ?", this.idColle);
             List<Campo_custom_item> valorcampos =
                             db.Query<Campo_custom_item>("SELECT valor FROM Campo_custom_item WHERE IdItem = ?", this.idItem);
-
+            
+            ListaCampos.Children.Clear();
             for (int i = 0; i < nombrescampos.Count(); i++)
             {
                 Label nuevoEntry1 = new Label();
                 try
                 {
                     nuevoEntry1.Text = nombrescampos[i].nombre_campo;
+                    nuevoEntry1.FontAttributes = FontAttributes.Bold;
                 }
                 catch (Exception e) { }
                 Label nuevoEntry2 = new Label();
                 try
                 {
                     nuevoEntry2.Text = valorcampos[i].valor;
+                    nuevoEntry2.Margin = new Thickness(5,0,0,0);
+                    nuevoEntry2.HorizontalTextAlignment = TextAlignment.Center;
                 }
                 catch (Exception e) { }
                 ListaCampos.Children.Add(nuevoEntry1);
@@ -74,7 +78,7 @@ namespace DERIAN.Views
 
         async void click_modificar(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new UpdateItemPage(this.idItem));
+            await Navigation.PushAsync(new UpdateItemPage(this.idItem, this.idColle));
         }
 
         void DeleteItem_Clicked(object sender, System.EventArgs e)
